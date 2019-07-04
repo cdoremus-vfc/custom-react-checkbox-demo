@@ -1,12 +1,36 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import { render } from 'react-dom';
+import CustomCheckbox from './CustomCheckbox';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+class App extends React.Component {
+  state = { checked: false };
+  message = 'Native checkbox checked value: ';
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+  handleCheckboxChange = event => {
+    this.setState({ checked: event.target.checked });
+    console.log(`this.state.checked ${this.state.checked}`);
+    const checkboxInput = document.querySelector('input[type=checkbox]');
+    console.log(`${this.message} ${checkboxInput.checked}`);
+    document.getElementById('CheckboxStateMessage').innerHTML = `${
+      this.message
+    } ${checkboxInput.checked}`;
+  };
+
+  render() {
+    return (
+      <div style={{ fontFamily: 'system-ui' }}>
+        <label>
+          <CustomCheckbox
+            checkedColor={'blue'}
+            checked={this.state.checked}
+            onChange={this.handleCheckboxChange}
+          />
+          <span style={{ marginLeft: 8 }}>Label Text</span>
+        </label>
+        <h2 id="CheckboxStateMessage">{this.message} false</h2>
+      </div>
+    );
+  }
+}
+
+render(<App />, document.getElementById('root'));
