@@ -1,26 +1,37 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import CustomCheckbox from './CustomCheckbox';
+
+class App extends React.Component {
+  state = { checked: false };
+  message = 'Native checkbox checked value: ';
+
+  handleCheckboxChange = event => {
+    this.setState({ checked: event.target.checked });
+    console.log(`this.state.checked ${this.state.checked}`);
+    const checkboxInput = document.querySelector('input[type=checkbox]');
+    console.log(`${this.message} ${checkboxInput.checked}`);
+    document.getElementById('CheckboxStateMessage').innerHTML = `${
+      this.message
+    } ${checkboxInput.checked}`;
+  };
+
+  render() {
+    return (
+      <div style={{ fontFamily: 'system-ui' }}>
+        <label>
+          <CustomCheckbox
+            checkedColor={'blue'}
+            checked={this.state.checked}
+            onChange={this.handleCheckboxChange}
+          />
+          <span style={{ marginLeft: 8 }}>Label Text</span>
+        </label>
+        <h2 id="CheckboxStateMessage">{this.message} false</h2>
+      </div>
+    );
+  }
 }
 
 export default App;
