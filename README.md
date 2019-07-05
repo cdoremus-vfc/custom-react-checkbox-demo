@@ -1,4 +1,4 @@
-## React Custom Checkbox Demo
+# React Custom Checkbox Demo
 
 This repo holds code that demonstrates a custom checkbox with a hidden native checkbox that gets send onChange events to set/unset its checked property when the custom component is checked/unchecked.
 
