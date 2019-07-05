@@ -1,4 +1,16 @@
+## React Custom Checkbox Demo
+
+This repo holds code that demonstrates a custom checkbox with a hidden native checkbox that gets send onChange events to set/unset its checked property when the custom component is checked/unchecked.
+
+It uses the following technologies:
+
+- [React](https://reactjs.org/) - the JavaScript UI library
+- [Styled-components](https://www.styled-components.com/) - a CSS-in-JS solution
+- [Formik](https://jaredpalmer.com/formik/) - handles HTML forms and form events in React
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+After cloning this repo, run `npm install` in this folder to install the project's dependencies.
 
 ## Available Scripts
 
